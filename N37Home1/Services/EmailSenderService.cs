@@ -21,10 +21,21 @@ namespace N37Home1.Services
             {
                 Task.Run(() =>
                 {
-
+                    try
+                    {
+                        SendEmail(message.ReceiverAddress);
+                    }
+                    catch
+                    {
+                        // filega shu email bilan muamo yoziladi
+                    }
+                    finally
+                    {
+                        // file.Close();
+                    }
                 });
             }
-
+            Task.WaitAll();
             return true;
         }
 
@@ -39,15 +50,15 @@ namespace N37Home1.Services
             return false;
         }
 
-        public bool SendEmail(string receiverAddress, string firstName, string lastName)
+        public bool SendEmail(string receiverAddress)
         {
             try // send message to UserEmail
             {
                 var mail = new MailMessage("anvarjonovozodbek416@gmail.com", receiverAddress);
                 mail.Subject = "Siz muvaffaqiyatli registratsiyadan o'tdingiz";
                 mail.Body = "Hurmatli {{User FirstName}} {{User LastName}}, siz registratsiyadan muvaffaqiyatli o'tdingiz"
-                    .Replace("{{User FirstName}}", firstName)
-                    .Replace("{{User LastName}}", lastName);
+                    .Replace("{{User FirstName}}", "User")
+                    .Replace("{{User LastName}}", "");
                 var smtpClient = new SmtpClient("smtp.gmail.com", 587); // Replace with your SMTP server address and port
                 smtpClient.Credentials = new NetworkCredential("sultonbek.rakhimov.recovery@gmail.com", "szabguksrhwsbtie");
                 smtpClient.EnableSsl = true;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using N37Home1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,12 @@ namespace N37Home1.Services
 {
     internal class UserService
     {
-        public void GetUser()
+        public IEnumerable<User> GetUser(IEnumerable<User> users)
         {
-
+            foreach (var user in users)
+            {
+                yield return user;
+            }
         }
     }
 }

@@ -25,9 +25,9 @@ namespace N37Home1.Services
 
         public void NotifyUsers()
         {
-            var users = _userService.GetUser(new );
-            var templates = _emailTemplateService.GetTemplates(users);
-            var message = _emailService.GetMassages(IEnumerable<(User, EmailTemplate, string)>x(users, templates, "anvarjonovozodbek416@gmail.com"));
+            //var users = _userService.GetUser(new );
+            //var templates = _emailTemplateService.GetTemplates(users);
+            //var message = _emailService.GetMassages(IEnumerable<(User, EmailTemplate, string)>x(users, templates, "anvarjonovozodbek416@gmail.com"));
         }
     }
 }

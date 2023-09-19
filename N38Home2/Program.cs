@@ -7,6 +7,12 @@ Faker<Employee> fake = new Faker<Employee>()
     .RuleFor(employee => employee.Name, name => name.Person.FullName)
     .RuleFor(employee => employee.WorkName, workName => workName.Company.CompanyName());
 
+Faker<Order> orders = new Faker<Order>()
+    .RuleFor(order => order.Id, id => Guid.NewGuid())
+    .RuleFor(order => order.ProductName, name => name.Lorem.Paragraph(1))
+    .RuleFor(order => order.Price, price => price.Random.Decimal(1, 3000))
+    .RuleFor(order => order.OrderDate, date => DateTime.Now);
+
 
 public class Employee
 {

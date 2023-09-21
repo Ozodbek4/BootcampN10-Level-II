@@ -16,7 +16,7 @@ namespace N41Home1
             }
         }
 
-        public T Dequeue(T item)
+        public T Dequeue()
         {
             if (IsEmpty())
             {

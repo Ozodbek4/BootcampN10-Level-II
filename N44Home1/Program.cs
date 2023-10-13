@@ -12,25 +12,39 @@
 
 
 using N44Home2.Models;
+using Bogus;
 
-List<User> users = new List<User>()
+var user = new Faker<User>()
+    .RuleFor(user => user.PhoneNumber, usering => usering.Person.Phone);
+
+var users = user.Generate(2);
+
+foreach(var use in users)
 {
-    new User(1, "Doe", "Stiven", "doestiven04@gmail.com", true),
-    new User(2, "John", "Stiven", "johnstiven04@gmail.com", false),
-    new User(3, "Tom", "Stiven", "tomstiven04@gmail.com", true),
-    new User(4, "Sarah", "Stiven", "sarahstiven04@gmail.com", true),
-    new User(5, "Alex", "Stiven", "alexstiven04@gmail.com", false),
-};
+    Console.WriteLine(use.PhoneNumber);
+}
 
-// linq deferred ga misollar
-var deferredExecution = users.Where(item => item.IsNeighbor);
-deferredExecution.ToList().ForEach(item => Console.WriteLine(item.ToString()));
 
-// linq immediate
-var immediate = users.Count(item => !item.IsNeighbor);
-Console.WriteLine(immediate);
 
-// linq mixed
 
-var mixed = users.OrderByDescending(item => item.FirstName).First();
-Console.WriteLine(mixed);
+//List<User> users = new List<User>()
+//{
+//    new User(1, "Doe", "Stiven", "doestiven04@gmail.com", true),
+//    new User(2, "John", "Stiven", "johnstiven04@gmail.com", false),
+//    new User(3, "Tom", "Stiven", "tomstiven04@gmail.com", true),
+//    new User(4, "Sarah", "Stiven", "sarahstiven04@gmail.com", true),
+//    new User(5, "Alex", "Stiven", "alexstiven04@gmail.com", false),
+//};
+
+//// linq deferred ga misollar
+//var deferredExecution = users.Where(item => item.IsNeighbor);
+//deferredExecution.ToList().ForEach(item => Console.WriteLine(item.ToString()));
+
+//// linq immediate
+//var immediate = users.Count(item => !item.IsNeighbor);
+//Console.WriteLine(immediate);
+
+//// linq mixed
+
+//var mixed = users.OrderByDescending(item => item.FirstName).First();
+//Console.WriteLine(mixed);

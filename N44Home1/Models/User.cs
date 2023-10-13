@@ -8,19 +8,23 @@ namespace N44Home2.Models
 {
     internal class User
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public bool IsNeighbor { get; set; }
+        public int? Id { get; set; }
+        public string? FirstName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public bool? IsNeighbor { get; set; }
 
-        public User(int id, string firstName, string lastName, string email, bool isNeighbor)
+        public User() { }
+
+        public User(int? id, string? firstName, string?  lastName, string? email, bool? isNeighbor, string phone)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             IsNeighbor = isNeighbor;
+            PhoneNumber = phone;
         }
 
         public override string ToString()

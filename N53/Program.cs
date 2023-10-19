@@ -1,34 +1,40 @@
-var builder = WebApplication.CreateBuilder(args);
+//N51 - HT1
 
-// Add services to the container.
+//- buyurtmalar(Order) va bitta order ichidagi sotib olingan tovarlar ( Product ) uchun endpoint qanday bo'lishligi kerak ?
+//- web api konfiguratsiyasi uchun yaratilgan fayllar qaysi layerda turishligi kerak ?
+//- controller ichida nechta service inject qilish mumkin ?
+//- controller ichida foundations service larini ishlatish mumkinmi ?
 
-var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+/*  buyurtmalar(Order) va bitta order ichidagi sotib olingan tovarlar ( Product ) uchun endpoint qanday bo'lishligi kerak ?
+ *  
+ *  Javoblar:
+ *  Get methodida parameter sifatida Order ning id si fromroute orqali kirib keladi
+ *    
+ *  Create bu methoda esa user id si va productlar listi(yoki productlar id ning listi) parameter sifatida kirib keladi. va yarilgan orderni qataradi
+ *  
+ *  Update bu methodda esa orderni o'zi kirib keladi. Method esa update bo'lgan order qataradi
+ *  
+ *  Delete bu methodda parameter sifatida order kirib keladi, va bu method delete bo'lgan order qaytardi 
+ */
 
-app.UseHttpsRedirection();
+/*  web api konfiguratsiyasi uchun yaratilgan fayllar qaysi layerda turishligi kerak ?
+ * 
+ * Javoblar:
+ * presentation layer da 
+ */
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+/*
+ * controller ichida nechta service inject qilish mumkin ?
+ * 
+ * Javoblar:
+ * Istalgancha
+ */
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
 
-app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+/*
+ * controller ichida foundations service larini ishlatish mumkinmi ?
+ * 
+ * Javoblar:
+ * Inject qilish orqali ishlatish mumkin
+ */

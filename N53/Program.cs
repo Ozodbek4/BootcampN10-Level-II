@@ -32,8 +32,7 @@
  */
 
 
-/*
- * controller ichida foundations service larini ishlatish mumkinmi ?
+/* controller ichida foundations service larini ishlatish mumkinmi ?
  * 
  * Javoblar:
  * Inject qilish orqali ishlatish mumkin

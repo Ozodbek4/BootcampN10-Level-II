@@ -21,19 +21,5 @@
 /*  web api konfiguratsiyasi uchun yaratilgan fayllar qaysi layerda turishligi kerak ?
  * 
  * Javoblar:
- * presentation layer da 
- */
-
-/*
- * controller ichida nechta service inject qilish mumkin ?
- * 
- * Javoblar:
- * Istalgancha
- */
-
-
-/* controller ichida foundations service larini ishlatish mumkinmi ?
- * 
- * Javoblar:
- * Inject qilish orqali ishlatish mumkin
+ * konfiguratsiya uchun yaratilgan fayllar Api dagi Properties folderining lauchSetting.json 
  */

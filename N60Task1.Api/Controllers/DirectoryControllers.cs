@@ -10,6 +10,6 @@ namespace N60Task1.Api.Controllers
     {
         [HttpGet]
         public async ValueTask<IActionResult> Get([FromServices] SearchFileService search, string fileName) =>
-            Ok(search.SearchFolder("D:\\",fileName));
+            Ok(search.SearchFolder("F:\\",fileName));
     }
 }

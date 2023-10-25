@@ -16,7 +16,7 @@ namespace N62Home1.Controllers
             _tokenGeneratorService = tokenGeneratorService;
         }
 
-        [HttpGet]
+        [HttpPut]
         public async ValueTask<IActionResult> Login([FromBody] User user) =>
             Ok(await _tokenGeneratorService.GetToken(user));
     }

@@ -1,0 +1,6 @@
+﻿namespace N58Home.Api.wwwroot
+{
+    public class abc
+    {
+    }
+}

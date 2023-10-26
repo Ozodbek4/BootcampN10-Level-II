@@ -1,7 +1,7 @@
 using N63Task1.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
+//builder.Services.Configure<JwtSetting>
 // Add services to the container.
 
 builder.Services.AddControllers();

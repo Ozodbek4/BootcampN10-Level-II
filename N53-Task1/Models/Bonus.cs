@@ -1,4 +1,4 @@
-﻿namespace N53_Task1.Models;
+﻿namespace N53Home1.Models;
 
 internal class Bonus
 {

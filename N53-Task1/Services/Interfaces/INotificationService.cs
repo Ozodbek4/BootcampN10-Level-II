@@ -1,4 +1,4 @@
-﻿namespace N53_Task1.Services.Interfaces;
+﻿namespace N53Home1.Services.Interfaces;
 
 internal interface INotificationService
 {

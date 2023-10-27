@@ -1,4 +1,4 @@
-﻿namespace N53_Task1.Events;
+﻿namespace N53Home1.Events;
 
 internal class OrderCreatedEvent
 {

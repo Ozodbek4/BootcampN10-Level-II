@@ -1,12 +1,12 @@
-﻿namespace N53_Task1.Models;
+﻿namespace N53Home1.Models;
 
 internal class Order
 {
     public Guid Id { get; set; }
 
-    public Guid UserId {  get; set; }
-    
-    public decimal Amount {  get; set; }
+    public Guid UserId { get; set; }
+
+    public decimal Amount { get; set; }
 
     public bool IsCanceled { get; set; }
 

@@ -1,4 +1,4 @@
-﻿namespace N53_Task1.Services;
+﻿namespace N53Home1.Services;
 
 internal class SmsSenderService
 {

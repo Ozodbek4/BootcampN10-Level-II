@@ -1,4 +1,4 @@
-﻿namespace N53_Task1.Models;
+﻿namespace N53Home1.Models;
 
 internal class User
 {
@@ -8,7 +8,7 @@ internal class User
 
     public string LastName { get; set; }
 
-    public string EmailAddress {  get; set; }
+    public string EmailAddress { get; set; }
 
     public string Password { get; set; }
 }

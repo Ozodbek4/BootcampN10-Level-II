@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection(nameof(JwtSettings)));
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<FileService>();
+builder.Services.AddScoped<StorageFileService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddTransient<TokenGeneratorService>();
 

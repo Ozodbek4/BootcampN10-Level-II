@@ -9,5 +9,9 @@
   <ItemGroup>
     <ProjectReference Include="..\N65.Identity.Domain\N65.Identity.Domain.csproj" />
   </ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Max.FileBaseContext.Context" Version="0.0.7" />
+	</ItemGroup>
 
 </Project>

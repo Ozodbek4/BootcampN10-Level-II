@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\N65.Identity.Persistence\N65.Identity.Persistence.csproj" />
+    <ProjectReference Include="..\N65.Idnetity.Application\N65.Identity.Application.csproj" />
+  </ItemGroup>
+
 </Project>

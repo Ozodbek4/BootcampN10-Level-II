@@ -9,20 +9,20 @@ var baseController = new ServiceCollection();
 baseController
     .AddSingleton<UserBonusService>()
     .AddSingleton<UserPromotionService>()
-    .AddScoped<INotificationService, EmailSenderService>()
-    .AddScoped<INotificationService, SmsSenderService>()
-    .AddScoped<INotificationService, TelegramSenderService>()
+    .AddScoped<EmailSenderService>()
+    .AddScoped<SmsSenderService>()
+    .AddScoped<TelegramSenderService>()
     .AddScoped<BonusAchievedEvent>()
     .AddScoped<OrderCreatedEvent>();
 
 var app = baseController.BuildServiceProvider();
 
+var bonus = app.CreateScope().ServiceProvider.GetRequiredService<UserBonusService>();
+var promotion = app.CreateScope().ServiceProvider.GetRequiredService<UserPromotionService>();
 var email = app.GetRequiredService<EmailSenderService>();
 var bonusEvent = app.GetRequiredService<BonusAchievedEvent>;
 var orderPromotionEvent = app.GetRequiredService<OrderCreatedEvent>();
 var sms =  app.GetRequiredService<SmsSenderService>();
 var tg = app.GetRequiredService<TelegramSenderService>();
-var bonus = app.CreateScope().ServiceProvider.GetRequiredService<UserBonusService>();
-var promotion = app.CreateScope().ServiceProvider.GetRequiredService<UserPromotionService>();
 
 await bonus.Create(UsersList.Users);

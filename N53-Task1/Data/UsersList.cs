@@ -20,8 +20,8 @@ internal static class UsersList
 
     public static List<Bonus> Bonuses = new List<Bonus>()
     {
-        new Bonus(){Id = Guid.NewGuid(), UserId = Users[0].Id, Amount = 10},
-        new Bonus(){Id = Guid.NewGuid(), UserId = Users[1].Id, Amount = 10},
-        new Bonus(){Id = Guid.NewGuid(), UserId = Users[2].Id, Amount = 30},
+        new Bonus(){Id = Guid.NewGuid(), UserId = Users[0].Id, Amount = 1000},
+        new Bonus(){Id = Guid.NewGuid(), UserId = Users[1].Id, Amount = 1000},
+        new Bonus(){Id = Guid.NewGuid(), UserId = Users[2].Id, Amount = 3000},
     };
 }

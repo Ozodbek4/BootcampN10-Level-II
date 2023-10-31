@@ -11,4 +11,6 @@ public class Book
     public virtual Author Author { get; set; }
 
     public Guid AuthorId { get; set; }
+
+    public bool IsDeleted { get; set; } = false;
 }

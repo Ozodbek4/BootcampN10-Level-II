@@ -21,7 +21,7 @@ public class BookService : IBookService
         return new ValueTask<Book>(book);
     }
 
-    public ValueTask<IEnumerable<Book>> GetAsync(IEnumerable<Book> books) =>
+    public ValueTask<IEnumerable<Book>> GetAsync() =>
         new ValueTask<IEnumerable<Book>>(_dbContext.Books);
 
     public async ValueTask<Book> CreateAsync(Book book)

@@ -21,8 +21,8 @@ namespace N66Home.Api.Controllers
             Ok(await _authorService.GetById(id));
 
         [HttpGet]
-        public async ValueTask<IActionResult> GetAsync([FromBody] IEnumerable<Author> authors) =>
-            Ok(await _authorService.GetAsync(authors));
+        public async ValueTask<IActionResult> GetAsync() =>
+            Ok(await _authorService.GetAsync());
 
         [HttpPost]
         public async ValueTask<IActionResult> CreateAsync([FromBody] Author author) =>
@@ -32,7 +32,7 @@ namespace N66Home.Api.Controllers
         public async ValueTask<IActionResult> UpdateAsync([FromBody] Author author) =>
             Ok(await _authorService.UpdateAsync(author));
 
-        [HttpDelete]
+        [HttpDelete("{id:Guid}")]
         public async ValueTask<IActionResult> DeleteAsync([FromRoute] Guid id) =>
             Ok(await _authorService.DeleteAsync(id));
     }

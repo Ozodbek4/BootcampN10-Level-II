@@ -1,8 +1,5 @@
 ﻿using N66Home.Api.Domain.Entities;
 using N66Home.Api.Persistence.DataContext;
-using System.Text.Json;
-using System;
-using Microsoft.EntityFrameworkCore;
 
 namespace N66Home.Api.Persistence.SeedData;
 
@@ -18,7 +15,7 @@ public class SeedDataService
 
     public async void SeedDataDb()
     {
-        if (_appDbContext.Author.Any())
+        if (!_appDbContext.Author.Any())
         {
             _appDbContext.Author.AddRange(new Author
             {
@@ -34,7 +31,7 @@ public class SeedDataService
             await _appDbContext.SaveChangesAsync();
         }
 
-        if (_appDbContext.Books.Any())
+        if (!_appDbContext.Books.Any())
         {
             _appDbContext.Books.AddRange(new Book
             {
@@ -48,10 +45,8 @@ public class SeedDataService
                 Description = "Asar",
                 AuthorId = _appDbContext.Author.Skip(1).First().Id,
             });
+
+            await _appDbContext.SaveChangesAsync();
         }
-        var allBooks = await _appDbContext.Books
-            .Include(book => book.Author)
-            .ToListAsync();
-        Console.WriteLine(JsonSerializer.Serialize(allBooks));
     }
 }

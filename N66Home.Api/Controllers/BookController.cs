@@ -20,8 +20,8 @@ namespace N66Home.Api.Controllers
             Ok(await _bookService.GetById(id));
 
         [HttpGet]
-        public async ValueTask<IActionResult> GetAsync([FromBody] IEnumerable<Book> books) =>
-            Ok(await _bookService.GetAsync(books));
+        public async ValueTask<IActionResult> GetAsync() =>
+            Ok(await _bookService.GetAsync());
 
         [HttpPost]
         public async ValueTask<IActionResult> CreateAsync([FromBody] Book book) =>
@@ -31,7 +31,7 @@ namespace N66Home.Api.Controllers
         public async ValueTask<IActionResult> UpdateAsync([FromBody] Book book) =>
             Ok(await _bookService.UpdateAsync(book));
 
-        [HttpDelete]
+        [HttpDelete("{id:Guid}")]
         public async ValueTask<IActionResult> DeleteAsync([FromRoute] Guid id) =>
             Ok(await _bookService.DeleteAsync(id));
     }

@@ -6,7 +6,7 @@ public interface IAuthorService
 {
     ValueTask<Author> GetById(Guid id);
 
-    ValueTask<IEnumerable<Author>> GetAsync(IEnumerable<Author> authors);
+    ValueTask<IEnumerable<Author>> GetAsync();
 
     ValueTask<Author> CreateAsync(Author author);
 

@@ -21,7 +21,7 @@ public class AuthorService : IAuthorService
         return new ValueTask<Author>(author);
     }
 
-    public ValueTask<IEnumerable<Author>> GetAsync(IEnumerable<Author> authors) =>
+    public ValueTask<IEnumerable<Author>> GetAsync() =>
         new ValueTask<IEnumerable<Author>>(_dbContext.Author);
 
     public async ValueTask<Author> CreateAsync(Author author)

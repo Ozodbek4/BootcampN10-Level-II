@@ -6,7 +6,7 @@ public interface IBookService
 {
     ValueTask<Book> GetById(Guid id);
 
-    ValueTask<IEnumerable<Book>> GetAsync(IEnumerable<Book> books);
+    ValueTask<IEnumerable<Book>> GetAsync();
 
     ValueTask<Book> CreateAsync(Book book);
 

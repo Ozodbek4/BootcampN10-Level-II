@@ -1,34 +1,32 @@
+using N66Home.Api.Domain.Services;
+using N66Home.Api.Domain.Services.Interfaces;
+using N66Home.Api.Persistence.DataContext;
+using N66Home.Api.Persistence.SeedData;
+using System.Text.Json;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddControllers();
+builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddScoped<IAuthorService, AuthorService>()
+    .AddScoped<IBookService, BookService>()
+    .AddScoped<SeedDataService>();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
+
+app.UseSwagger();
+app.UseSwaggerUI();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
+app.MapControllers();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

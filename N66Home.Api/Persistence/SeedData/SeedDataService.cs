@@ -1,15 +1,26 @@
 ﻿using N66Home.Api.Domain.Entities;
 using N66Home.Api.Persistence.DataContext;
+using System.Text.Json;
+using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace N66Home.Api.Persistence.SeedData;
 
 public class SeedDataService
 {
-    public async void SeedDataDb(AppDbContext appDataContext)
+    private readonly AppDbContext _appDbContext;
+
+    public SeedDataService(AppDbContext appDbContext)
     {
-        if (appDataContext.Author.Any())
+        _appDbContext = appDbContext;
+        SeedDataDb();
+    }
+
+    public async void SeedDataDb()
+    {
+        if (_appDbContext.Author.Any())
         {
-            appDataContext.Author.AddRange(new Author
+            _appDbContext.Author.AddRange(new Author
             {
                 FirstName = "Navoiy",
                 LastName = "Alisher",
@@ -20,23 +31,27 @@ public class SeedDataService
                 LastName = "Hoshimov",
             });
 
-            await appDataContext.SaveChangesAsync();
+            await _appDbContext.SaveChangesAsync();
         }
 
-        if (appDataContext.Books.Any())
+        if (_appDbContext.Books.Any())
         {
-            appDataContext.Books.AddRange(new Book
+            _appDbContext.Books.AddRange(new Book
             {
                 Title = "Xamsa",
                 Description = "Doston",
-                AuthorId = appDataContext.Author.First().Id,
+                AuthorId = _appDbContext.Author.First().Id,
             },
             new Book
             {
                 Title = "Sariq devni minib",
                 Description = "Asar",
-                AuthorId = appDataContext.Author.Skip(1).First().Id,
+                AuthorId = _appDbContext.Author.Skip(1).First().Id,
             });
         }
+        var allBooks = await _appDbContext.Books
+            .Include(book => book.Author)
+            .ToListAsync();
+        Console.WriteLine(JsonSerializer.Serialize(allBooks));
     }
 }

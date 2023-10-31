@@ -43,7 +43,7 @@ public class AppFileContext : FileContext, IDataContext
         foreach (var fileSet in fileSets)
             foreach (var entry in fileSet.GetEntries())
             {
-                if (entry is not IFileEntityEntry<IAuditableEntity> entityEntry) continue;
+                if (entry is not IFileEntityEntry<AuditableEntity> entityEntry) continue;
 
                 if (entityEntry.State == FileEntityState.Added)
                     entityEntry.Entity.CreatedDate = DateTimeOffset.Now;
@@ -63,7 +63,7 @@ public class AppFileContext : FileContext, IDataContext
             foreach (var entry in fileSet.GetEntries())
             {
                 // Skip entities that are not soft deletable
-                if (entry is not IFileEntityEntry<IAuditableEntity> { State: FileEntityState.Deleted } entityEntry) continue;
+                if (entry is not IFileEntityEntry<AuditableEntity> { State: FileEntityState.Deleted } entityEntry) continue;
 
                 // Soft delete all entities except PostView
                 entityEntry.Entity.IsDeleted = true;

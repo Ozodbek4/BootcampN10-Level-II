@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using N64_Identity.Application.Common.Identity.Services;
 using N64_Identity.Domain.Entities;
 using N64_Identity.Infrastructure.Common.Constants;
-using N64_Identity.Application.Common.Identity.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -10,7 +10,6 @@ namespace N64_Identity.Infrastructure.Common.Identity.Services;
 
 public class TokenGeneratorService : ITokenGeneratorService
 {
-    private const string userId = ClaimConstants.UserId;
     public string SecretKey = "958003b4-db33-4321-a375-545e3c833782";
 
     public string GetToken(User user) =>
@@ -35,6 +34,6 @@ public class TokenGeneratorService : ITokenGeneratorService
         new List<Claim>()
         {
             new(ClaimTypes.Email, user.EmailAddress),
-            new(userId, user.Id.ToString())
+            new(ClaimConstants.UserId, user.Id.ToString())
         };
 }
